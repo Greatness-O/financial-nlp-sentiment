@@ -16,9 +16,9 @@ Almost all models significantly outperform the majority class baseline.
 
 ## Key Findings
 
-- **CNN outperforms Bi-LSTM** on short financial sentences, local n-gram pattern detection matters more than global sequence modelling for this corpus.
-- **Logistic Regression rivals deep models** when properly tuned with TF-IDF features and SMOTE oversampling, a reminder that complexity isn't always better.
-- **Class imbalance is a major challenge**: the dataset is 62% neutral. SMOTE was applied at the data level for traditional models, `class_weight` was applied at the algorithm level for deep models.
+- CNN outperforms Bi-LSTM on short financial sentences, local n-gram pattern detection matters more than global sequence modelling for this corpus.
+- Logistic Regression rivals deep models when properly tuned with TF-IDF features and SMOTE oversampling, a reminder that complexity isn't always better.
+- Class imbalance is a major challenge: the dataset is 62% neutral. SMOTE was applied at the data level for traditional models, `class_weight` was applied at the algorithm level for deep models.
 
 ## Dataset
 
