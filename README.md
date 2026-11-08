@@ -40,10 +40,9 @@ financial-nlp-sentiment/
 │   └── financial_sentiment_classification.ipynb  
 │
 ├── data/
-│   └── Sentences_75Agree.txt  # Dataset (download separately — see Dataset section)
+│   └── FinancialPhraseBank-v1.0  
 │
-├── outputs/
-│   └── figures/               # Confusion matrices, training curves, word clouds
+├── outputs  # Confusion matrices, training curves, word clouds
 │
 ├── requirements.txt
 └── README.md
@@ -54,25 +53,25 @@ financial-nlp-sentiment/
 
 ### Traditional Models
 
-Both models use a shared TF-IDF vectorisation pipeline followed by **SMOTE oversampling** on the training split to address class imbalance.
+Both models use a shared TF-IDF vectorisation pipeline followed by SMOTE oversampling on the training split to address class imbalance.
 
 - **Logistic Regression:** tuned via `GridSearchCV` over regularisation strength (`C`) and solver.
 - **Multinomial Naive Bayes:** tuned via `GridSearchCV` over Laplace smoothing (`alpha`).
 
 ### Deep Learning Models
 
-Both models use a Keras Embedding layer on padded sequences, with `class_weight` during training to handle imbalance. Architecture search is done using **KerasTuner (Hyperband)**.
+Both models use a Keras Embedding layer on padded sequences, with `class_weight` during training to handle imbalance. Architecture search is done using KerasTuner (Hyperband).
 
 - **CNN:** two Conv1D layers with MaxPooling, a Dense layer and Dropout.
 - **Bi-LSTM:** bidirectional LSTM layer with Dropout, followed by a Dense classification head.
 
-Both deep models use **EarlyStopping** (monitoring validation loss) to prevent overfitting.
+Both deep models use EarlyStopping (monitoring validation loss) to prevent overfitting.
 
 ### Evaluation Metrics
 
 Each model is evaluated on a test split (20%) using:
-- Overall **accuracy**
-- **Macro-averaged F1-score** (primary metric, accounts for class imbalance)
+- Overall accuracy
+- Macro-averaged F1-score (primary metric, accounts for class imbalance)
 - Per-class precision, recall and F1 (via `classification_report`)
-- **Confusion matrix** visualisations
+- Confusion matrix visualisations
 
