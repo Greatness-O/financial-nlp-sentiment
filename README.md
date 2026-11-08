@@ -10,7 +10,7 @@ This project examines financial sentiment classification by building and evaluat
 | Tuned CNN | Deep Learning | 76.85% | 0.7010 |
 | Multinomial Naive Bayes | Traditional ML | 75.54% | 0.6788 |
 | Tuned Bi-LSTM | Deep Learning | 61.22%% | 0.4784 |
-| Majority Class Baseline | — | 62.1% | — |
+| Majority Class Baseline | x | 62.1% | x |
 
 Almost all models significantly outperform the majority class baseline.
 
@@ -56,15 +56,15 @@ financial-nlp-sentiment/
 
 Both models use a shared TF-IDF vectorisation pipeline followed by **SMOTE oversampling** on the training split to address class imbalance.
 
-- **Logistic Regression** — tuned via `GridSearchCV` over regularisation strength (`C`) and solver.
-- **Multinomial Naive Bayes** — tuned via `GridSearchCV` over Laplace smoothing (`alpha`).
+- **Logistic Regression:** tuned via `GridSearchCV` over regularisation strength (`C`) and solver.
+- **Multinomial Naive Bayes:** tuned via `GridSearchCV` over Laplace smoothing (`alpha`).
 
 ### Deep Learning Models
 
 Both models use a Keras Embedding layer on padded sequences, with `class_weight` during training to handle imbalance. Architecture search is done using **KerasTuner (Hyperband)**.
 
-- **CNN** — two Conv1D layers with MaxPooling, a Dense layer and Dropout.
-- **Bi-LSTM** — bidirectional LSTM layer with Dropout, followed by a Dense classification head.
+- **CNN:** two Conv1D layers with MaxPooling, a Dense layer and Dropout.
+- **Bi-LSTM:** bidirectional LSTM layer with Dropout, followed by a Dense classification head.
 
 Both deep models use **EarlyStopping** (monitoring validation loss) to prevent overfitting.
 
